@@ -98,7 +98,18 @@ body {
 .row3column3 {
   width: 67%;
   float: left;
-  background: #fff;
+  background: white;
+}
+
+/* Animates screen coming in upon click of button */
+#row3column3 {
+  width: 0;
+  height: 100%;
+  box-shadow: 0px 1px 10px #808080;
+  -webkit-transition: width 2000ms; /* For Safari 3.1 to 6.0 */
+  transition: width 2000ms; /* Standard syntax */
+  -webkit-transition-timing-function: ease; /* For Safari 3.1 to 6.0 */
+  transition-timing-function: ease; /* Standard syntax */
 }
 
 .row3column4 {
@@ -261,7 +272,8 @@ body {
 	<div class="row2column1 row2height gridlines"></div>
 	<div class="row2column2 row2height frameColor gridlines"></div>
 	<div class="container row2column3 row2height frameColor gridlines">
-    	<a class="vertical-center" href="">Menu</a>
+    	<!-- When the Menu button is clicked, the animation of the page comes in and the function is to bring in the text and other material after the animation. -->
+    	<a class="vertical-center" href="#" onclick="document.getElementById('row3column3').style = 'width:0'; document.getElementById('row3column3').style = 'width:100%; background:white'; setTimeout(myFunction, 2000)">Menu</a>
     </div>
 	<div class="container row2column4 row2height frameColor gridlines">
     	<b class="vertical-center align-right">GSAP BASICS</b>
@@ -273,7 +285,9 @@ body {
 <div class="row">
 	<div class="row3column1 row3height gridlines"></div>
 	<div class="row3column2 row3height frameColor gridlines"></div>
-	<div class="row3column3 row3height gridlines"></div>
+	<div class="row3column3 row3height gridlines">
+    	<div id="row3column3"></div>
+    </div>
 	<div class="row3column4 row3height frameColor gridlines"></div>
 	<div class="row3column5 row3height gridlines"></div>
 </div>
@@ -283,8 +297,8 @@ body {
 	<div class="row4column2 row4height frameColor gridlines"></div>
 	<div class="container row4column3 row4height frameColor gridlines">
     	<div class="vertical-center">
-    		<button class="frame-buttons" type="button" onclick="alert('Hello Tidbit!')"><span style="font-size:12px">&lt;&sol;&gt;</span>Tidbit</button>
-        	<button class="frame-buttons" type="button" onclick="alert('Hello Code!')"><span style="font-size:12px">&lt;&sol;&gt;</span>Code</button>
+    		<button class="frame-buttons" type="button" onclick="document.getElementById('row3column3').style = 'width:100%; background:white'; setTimeout(myFunction, 2000)"><span style="font-size:12px">&lt;&sol;&gt;</span>Tidbit</button>
+        	<button class="frame-buttons" type="button" onclick="document.getElementById('row3column3').style = 'width:100%; background:white'; setTimeout(myFunction, 2000)"><span style="font-size:12px">&lt;&sol;&gt;</span>Code</button>
 		</div>
     </div>
 	<div class="container row4column4 row4height frameColor gridlines">
@@ -300,6 +314,12 @@ body {
 <div class="row">
 	<div class="row5 backgroundColor gridlines"></div>
 </div>
+
+<script>
+function myFunction() {
+  document.getElementById('row3column3').innerHTML = 'Hello Dallin Stephens!';
+}
+</script>
 
 </body>
 </html>
