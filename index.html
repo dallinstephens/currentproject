@@ -40,9 +40,7 @@ body {
   display: table;
 }
 
-.row1 {
-  height: 70px;
-}
+.row1 {height: 70px;}
 
 .row2height {height: 60px;}
 
@@ -141,9 +139,7 @@ body {
   float: left;
 }
 
-.row5 {
-  height: 70px;
-}
+.row5 {height: 70px;}
 
 /* These css changes are made when iphone is used in portrait mode. @media must come after css: eg. body {background-color: lightgreen;} to work. */
 @media only screen and (max-width: 485px) {
@@ -151,76 +147,83 @@ body {
     background-color: red;
   }
 
-  /* Row 2: 0.5% + 1.5% + 48% + 48% + 1.5% + 0.5% = 100% */
+  /* Adding 5 row heights (640px is the standard height of a iPhone 4): 5px + 60px + 510px + 60px + 5px = 640px */
+  .row1 {height: 5px;}
+  .row2height {height: 60px;}
+  .row3height {height: 510px;}
+  .row4height {height: 60px;}
+  .row5 {height: 5px;}
+
+  /* Row 2: 1% + 3% + 46% + 46% + 3% + 1% = 100% */
   .row2column1 {
-    width: 0.5%;
+    width: 1%;
   }
 
   .row2column2 {
-    width: 1.5%;
+    width: 3%;
   }
 
   .row2column3 {
-    width: 48%;
+    width: 46%;
   }
 
   .row2column4 {
-    width: 48%;
+    width: 46%;
   }
 
   .row2column5 {
-    width: 1.5%;
+    width: 3%;
   }
 
   .row2column6 {
-    width: 0.5%;
+    width: 1%;
   }
 
-  /* Row 3: 0.5% + 1.5% + 96% + 1.5% + 0.5% = 100% */
+  /* Row 3: 1% + 3% + 92% + 3% + 1% = 100% */
   .row3column1 {
-    width: 0.5%;
+    width: 1%;
   }
 
   .row3column2 {
-    width: 1.5%;
+    width: 3%;
   }
 
   .row3column3 {
-    width: 96%;
+    width: 92%;
   }
 
   .row3column4 {
-    width: 1.5%;
+    width: 3%;
   }
 
   .row3column5 {
-    width: 0.5%;
+    width: 1%;
   }
 
-  /* Row 4: 0.5% + 1.5% + 48% + 48% + 1.5% + 0.5% = 100% */
+  /* Row 4: 1% + 3% + 46% + 46% + 3% + 1% = 100% */
 
   .row4column1 {
-    width: 0.5%;
+    width: 1%;
   }
 
   .row4column2 {
-    width: 1.5%;
+    width: 3%;
   }
 
   .row4column3 {
-    width: 48%;
+    width: 46%;
   }
 
   .row4column4 {
-    width: 48%;
+    width: 46%;
   }
 
   .row4column5 {
-    width: 1.5%;
+    width: 3%;
   }
 
   .row4column6 {
-    width: 0.5%;
+    width: 1%;
   }
 
 }
