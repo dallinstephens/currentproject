@@ -15,6 +15,9 @@ body {
   box-sizing: border-box;
 }
 
+/* Frame buttons */
+.frame-buttons {height:30px; border-radius:5px;}
+
 /* The 2 classes below .container and .vertical-center are used to center anything vertically. */
 .container {
   position: relative;
@@ -31,7 +34,7 @@ body {
 .align-right {right: 0;}
 
 /* Add #000 to see gridlines, #ffffff00 to NOT see gridlines. Showing gridlines is important for redesigning the rows or columns. */
-.gridlines {border: 1px solid #ffffff00;}
+.gridlines {border: 1px solid #000;}
 
 /* This is used to clear float:left so I can start a new row with responsive web design. */
 .row::after {
@@ -40,12 +43,14 @@ body {
   display: table;
 }
 
-.row1 {height: 70px;}
+.row1 {height: 35px;}
 
+
+/* Row 2 Width: 15% + 1.5% + 33.5% + 33.5% + 1.5% + 15% = 100% */
 .row2height {height: 60px;}
 
 .row2column1 {
-  width: 20%;
+  width: 15%;
   float: left;
 }
 
@@ -56,12 +61,12 @@ body {
 }
 
 .row2column3 {
-  width: 28.5%;
+  width: 33.5%;
   float: left;
 }
 
 .row2column4 {
-  width: 28.5%;
+  width: 33.5%;
   float: left;
 }
 
@@ -72,15 +77,16 @@ body {
 }
 
 .row2column6 {
-  width: 20%;
+  width: 15%;
   float: left;
 }
 
-/* Adding 5 row heights (768px is the standard height of desktop website): 70px + 60px + 508px + 60px + 70px = 768px */
-.row3height {height: 508px;}
+/* Row 3 Width: 15% + 1.5% + 67% + 1.5% + 15% = 100% */
+/* Adding 5 row heights (768px is the standard height of desktop website): 35px + 60px + 578px + 60px + 35px = 768px */
+.row3height {height: 578px;}
 
 .row3column1 {
-  width: 20%;
+  width: 15%;
   float: left;
 }
 
@@ -90,7 +96,7 @@ body {
 }
 
 .row3column3 {
-  width: 57%;
+  width: 67%;
   float: left;
   background: #fff;
 }
@@ -101,14 +107,15 @@ body {
 }
 
 .row3column5 {
-  width: 20%;
+  width: 15%;
   float: left;
 }
 
+/* Row 4 Width: 15% + 1.5% + 33.5% + 33.5% + 1.5% + 15% = 100% */
 .row4height {height: 60px;}
 
 .row4column1 {
-  width: 20%;
+  width: 15%;
   float: left;
 }
 
@@ -119,12 +126,12 @@ body {
 }
 
 .row4column3 {
-  width: 28.5%;
+  width: 33.5%;
   float: left;
 }
 
 .row4column4 {
-  width: 28.5%;
+  width: 33.5%;
   float: left;
 }
 
@@ -135,26 +142,26 @@ body {
 }
 
 .row4column6 {
-  width: 20%;
+  width: 15%;
   float: left;
 }
 
-.row5 {height: 70px;}
+.row5 {height: 35px;}
 
-/* These css changes are made when iphone is used in portrait mode. @media must come after css: eg. body {background-color: lightgreen;} to work. */
-@media only screen and (max-width: 1000px) {
+/* These css changes are made as the size of the screen decreases. @media must come after css: eg. body {background-color: lightgreen;} to work. */
+@media only screen and (max-width: 1200px) {
   body {
     background-color: purple;
   }
 
-  /* Adding 5 row heights (320px is the standard height of a smallest iPhone): 5px + 60px + 400px + 60px + 5px = 530px */
+  /* Adding 5 row heights (320px is the standard height of a smallest iPhone): 5px + 60px + 570px + 60px + 5px = 700px */
   .row1 {height: 5px;}
   .row2height {height: 60px;}
-  .row3height {height: 400px;}
+  .row3height {height: 570px;}
   .row4height {height: 60px;}
   .row5 {height: 5px;}
 
-  /* Row 2: 1% + 3% + 46% + 46% + 3% + 1% = 100% */
+  /* Row 2 width: 1% + 3% + 46% + 46% + 3% + 1% = 100% */
   .row2column1 {
     width: 1%;
   }
@@ -179,7 +186,7 @@ body {
     width: 1%;
   }
 
-  /* Row 3: 1% + 3% + 92% + 3% + 1% = 100% */
+  /* Row 3 width: 1% + 3% + 92% + 3% + 1% = 100% */
   .row3column1 {
     width: 1%;
   }
@@ -200,7 +207,7 @@ body {
     width: 1%;
   }
 
-  /* Row 4: 1% + 3% + 46% + 46% + 3% + 1% = 100% */
+  /* Row 4 width: 1% + 3% + 46% + 46% + 3% + 1% = 100% */
 
   .row4column1 {
     width: 1%;
@@ -226,6 +233,20 @@ body {
     width: 1%;
   }
 
+}
+
+/* These css changes are made as the size of the screen decreases. @media must come after css: eg. body {background-color: lightgreen;} to work. */
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: red;
+  }
+
+  /* Adding 5 row heights (320px is the standard height of a smallest iPhone): 5px + 60px + 400px + 60px + 5px = 530px */
+  .row1 {height: 5px;}
+  .row2height {height: 60px;}
+  .row3height {height: 400px;}
+  .row4height {height: 60px;}
+  .row5 {height: 5px;}
 }
 
 </style>
@@ -261,12 +282,16 @@ body {
 	<div class="row4column1 row4height gridlines"></div>
 	<div class="row4column2 row4height frameColor gridlines"></div>
 	<div class="container row4column3 row4height frameColor gridlines">
-    	<button style="left:0; height:30px; border-radius:5px" class="vertical-center" type="button" onclick="alert('Hello Tidbit!')">&lt;&sol;&gt;Tidbit</button>
-        <button style="left:30%; height:30px; border-radius:5px" class="vertical-center" type="button" onclick="alert('Hello Code!')">&lt;&sol;&gt;Code</button>
+    	<div class="vertical-center">
+    		<button class="frame-buttons" type="button" onclick="alert('Hello Tidbit!')"><span style="font-size:12px">&lt;&sol;&gt;</span>Tidbit</button>
+        	<button class="frame-buttons" type="button" onclick="alert('Hello Code!')"><span style="font-size:12px">&lt;&sol;&gt;</span>Code</button>
+		</div>
     </div>
 	<div class="container row4column4 row4height frameColor gridlines">
-    	<button style="right:30%; height:30px; border-radius:5px" class="vertical-center" type="button" onclick="alert('Hello Previous!')">&#8678;PREV</button>
-        <button style="right:0; height:30px; border-radius:5px" class="vertical-center" type="button" onclick="alert('Hello Next!')">NEXT&#8680;</button>
+    	<div class="vertical-center align-right">
+    		<button class="frame-buttons" type="button" onclick="alert('Hello Previous!')">&#8678;PREV</button>
+        	<button class="frame-buttons" type="button" onclick="alert('Hello Next!')">NEXT&#8680;</button>
+		</div>
     </div>
 	<div class="row4column5 row4height frameColor gridlines"></div>
 	<div class="row4column6 row4height gridlines"></div>
