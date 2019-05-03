@@ -3,6 +3,20 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+/* These css changes are made when iphone is used in portrait mode. */
+@media only screen and (max-width: 480px) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+/* This is used for the color of the page. */
+body {
+  background-color: lightgreen;
+}
+
+.frameColor {background: lightgrey;}
+
 /* box-sizing: border-box; is used for responsive web design to organized columns and rows */
 * {
   box-sizing: border-box;
@@ -22,13 +36,6 @@
 }
 
 .align-right {right: 0;}
-
-/* This is used for the color of the page. */
-body {
-  background-color: lightgreen;
-}
-
-.frameColor {background: lightgrey;}
 
 /* Add #000 to see gridlines, #ffffff00 to NOT see gridlines. Showing gridlines is important for redesigning the rows or columns. */
 .gridlines {border: 1px solid #000;}
@@ -78,7 +85,7 @@ body {
   float: left;
 }
 
-/* Adding 5 row heights (768px is the standard height of a website): 70px + 60px + 508px + 60px + 70px = 768px */ 
+/* Adding 5 row heights (768px is the standard height of a website): 70px + 60px + 508px + 60px + 70px = 768px */
 .row3height {height: 508px;}
 
 .row3column1 {
