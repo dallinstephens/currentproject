@@ -8,13 +8,6 @@ body {
   background-color: lightgreen;
 }
 
-/* These css changes are made when iphone is used in portrait mode. @media must come after body {background-color: lightgreen;} to work. */
-@media only screen and (max-width: 485px) {
-  body {
-    background-color: lightblue;
-  }
-}
-
 .frameColor {background: lightgrey;}
 
 /* box-sizing: border-box; is used for responsive web design to organized columns and rows */
@@ -150,6 +143,82 @@ body {
 
 .row5 {
   height: 70px;
+}
+
+/* These css changes are made when iphone is used in portrait mode. @media must come after css: eg. body {background-color: lightgreen;} to work. */
+@media only screen and (max-width: 485px) {
+  /* Row 2: 0% + 1.5% + 48.5% + 48.5% + 1.5% + 0% = 100% */
+  .row2column1 {
+    width: 0%;
+  }
+
+  .row2column2 {
+    width: 1.5%;
+  }
+
+  .row2column3 {
+    width: 48.5%;
+  }
+
+  .row2column4 {
+    width: 48.5%;
+  }
+
+  .row2column5 {
+    width: 1.5%;
+  }
+
+  .row2column6 {
+    width: 0%;
+  }
+
+  /* Row 3: 0% + 1.5% + 97% + 1.5% + 0% = 100% */
+  .row3column1 {
+    width: 0%;
+  }
+
+  .row3column2 {
+    width: 1.5%;
+  }
+
+  .row3column3 {
+    width: 97%;
+  }
+
+  .row3column4 {
+    width: 1.5%;
+  }
+
+  .row3column5 {
+    width: 0%;
+  }
+
+  /* Row 4: 0% + 1.5% + 48.5% + 48.5% + 1.5% + 0% = 100% */
+
+  .row4column1 {
+    width: 0%;
+  }
+
+  .row4column2 {
+    width: 1.5%;
+  }
+
+  .row4column3 {
+    width: 48.5%;
+  }
+
+  .row4column4 {
+    width: 48.5%;
+  }
+
+  .row4column5 {
+    width: 1.5%;
+  }
+
+  .row4column6 {
+    width: 0%;
+  }
+
 }
 
 </style>
