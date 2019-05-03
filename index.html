@@ -3,16 +3,16 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-/* These css changes are made when iphone is used in portrait mode. */
-@media only screen and (max-width: 600px) {
-  body {
-    background-color: lightblue;
-  }
-}
-
 /* This is used for the color of the page. */
 body {
   background-color: lightgreen;
+}
+
+/* These css changes are made when iphone is used in portrait mode. @media must come after body {background-color: lightgreen;} to work. */
+@media only screen and (max-width: 480px) {
+  body {
+    background-color: lightblue;
+  }
 }
 
 .frameColor {background: lightgrey;}
