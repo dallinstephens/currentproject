@@ -1,17 +1,197 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Home Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* box-sizing: border-box; is used for responsive web design to organized columns and rows */
+* {
+  box-sizing: border-box;
+}
+
+/* The 2 classes below .container and .vertical-center are used to center anything vertically. */
+.container {
+  position: relative;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.align-right {right: 0;}
+
+/* This is used for the color of the page. */
+body {
+  background-color: lightgreen;
+}
+
+.frameColor {background: lightgrey;}
+
+/* Add #000 to see gridlines, #ffffff00 to NOT see gridlines. Showing gridlines is important for redesigning the rows or columns. */
+.gridlines {border: 1px solid #000;}
+
+/* This is used to clear float:left so I can start a new row with responsive web design. */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.row1 {
+  height: 70px;
+}
+
+.row2height {height: 60px;}
+
+.row2column1 {
+  width: 10%;
+  float: left;
+}
+
+.row2column2 {
+  width: 5%;
+  float: left;
+  border-top-left-radius: 15px;
+}
+
+.row2column3 {
+  width: 35%;
+  float: left;
+}
+
+.row2column4 {
+  width: 35%;
+  float: left;
+}
+
+.row2column5 {
+  width: 5%;
+  float: left;
+  border-top-right-radius: 15px;
+}
+
+.row2column6 {
+  width: 10%;
+  float: left;
+}
+
+/* Adding 5 row heights (768px is the standard height of a website): 70px + 60px + 508px + 60px + 70px = 768px */ 
+.row3height {height: 508px;}
+
+.row3column1 {
+  width: 10%;
+  float: left;
+}
+
+.row3column2 {
+  width: 5%;
+  float: left;
+}
+
+.row3column3 {
+  width: 70%;
+  float: left;
+  background: #fff;
+}
+
+.row3column4 {
+  width: 5%;
+  float: left;
+}
+
+.row3column5 {
+  width: 10%;
+  float: left;
+}
+
+.row4height {height: 60px;}
+
+.row4column1 {
+  width: 10%;
+  float: left;
+}
+
+.row4column2 {
+  width: 5%;
+  float: left;
+  border-bottom-left-radius: 15px;
+}
+
+.row4column3 {
+  width: 35%;
+  float: left;
+}
+
+.row4column4 {
+  width: 35%;
+  float: left;
+}
+
+.row4column5 {
+  width: 5%;
+  float: left;
+  border-bottom-right-radius: 15px;
+}
+
+.row4column6 {
+  width: 10%;
+  float: left;
+}
+
+.row5 {
+  height: 70px;
+}
+
+</style>
 </head>
 <body>
 
-<h1>Home Page</h1>
+<div class="row">
+	<div class="row1 backgroundColor gridlines"></div>
+</div>
 
-<h2>Navigation</h2>
-<ul>
-  <li><a href="orange.html">Orange Page</a></li>
-  <li><a href="blue.html">Blue Page</a></li>
-</ul>
+<div class="row">
+	<div class="row2column1 row2height gridlines"></div>
+	<div class="row2column2 row2height frameColor gridlines"></div>
+	<div class="container row2column3 row2height frameColor gridlines">
+    	<a class="vertical-center" href="">Menu</a>
+    </div>
+	<div class="container row2column4 row2height frameColor gridlines">
+    	<b class="vertical-center align-right">GSAP BASICS</b>
+    </div>
+	<div class="row2column5 row2height frameColor gridlines"></div>
+	<div class="row2column6 row2height gridlines"></div>
+</div>
+
+<div class="row">
+	<div class="row3column1 row3height gridlines"></div>
+	<div class="row3column2 row3height frameColor gridlines"></div>
+	<div class="row3column3 row3height gridlines"></div>
+	<div class="row3column4 row3height frameColor gridlines"></div>
+	<div class="row3column5 row3height gridlines"></div>
+</div>
+
+<div class="row">
+	<div class="row4column1 row4height gridlines"></div>
+	<div class="row4column2 row4height frameColor gridlines"></div>
+	<div class="container row4column3 row4height frameColor gridlines">
+    	<button style="left:0; height:30px; border-radius:5px" class="vertical-center" type="button" onclick="alert('Hello Tidbit!')">&lt;&sol;&gt;Tidbit</button>
+        <button style="left:30%; height:30px; border-radius:5px" class="vertical-center" type="button" onclick="alert('Hello Code!')">&lt;&sol;&gt;Code</button>
+    </div>
+	<div class="container row4column4 row4height frameColor gridlines">
+    	<button style="right:30%; height:30px; border-radius:5px" class="vertical-center" type="button" onclick="alert('Hello Previous!')">&#8678;PREV</button>
+        <button style="right:0; height:30px; border-radius:5px" class="vertical-center" type="button" onclick="alert('Hello Next!')">NEXT&#8680;</button>
+    </div>
+	<div class="row4column5 row4height frameColor gridlines"></div>
+	<div class="row4column6 row4height gridlines"></div>
+</div>
+
+<div class="row">
+	<div class="row5 backgroundColor gridlines"></div>
+</div>
 
 </body>
 </html>
