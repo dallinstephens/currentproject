@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.panel {
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0px 1px 10px #808080;
+  -webkit-transition: 0.5s; /* For Safari 3.1 to 6.0 */
+  transition: 0.5s;
+  overflow-x: hidden;
+}
+
+.menu {
+  height: 100%;
+  width: 0;
+  top: 0;
+  left: 0;
+  background: pink;
+}
+
+.tidbit {
+  height: 0;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: orange;
+}
+
+.code {
+  height: 0;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: yellow;
+}
+
+.PREV {
+  height: 100%;
+  width: 0;
+  top: 0;
+  left: 0;
+  background: purple;
+}
+
+.NEXT {
+  height: 100%;
+  width: 0;
+  top: 0;
+  right: 0;
+  background: silver;
+}
+
+.panel a {
+  text-decoration: none;
+  color: #818181;
+}
+
+.panel a:hover{
+  color: red;
+}
+
+#menu-button:hover{
+  color: #0000ff;
+}
+
+#tidbit-button:hover{
+  color: #0000ff;
+}
+
+#code-button:hover{
+  color: #0000ff;
+}
+
+#PREV-button:hover{
+  color: #0000ff;
+}
+
+#NEXT-button:hover{
+  color: #0000ff;
+}
+
+.panel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 50px;
+}
+</style>
+</head>
+<body>
+
+<div id="row3column3">
+  <div id="menu" class="panel menu">
+  	<a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+  </div>
+  <div id="tidbit" class="panel tidbit">
+  	<a href="javascript:void(0)" class="closebtn" onclick="closeTidbit()">&times;</a>
+  </div>
+  <div id="code" class="panel code">
+  	<a href="javascript:void(0)" class="closebtn" onclick="closeCode()">&times;</a>
+  </div>
+  <div id="PREV" class="panel PREV">
+  	<a href="javascript:void(0)" class="closebtn" onclick="closePREV()">&times;</a>
+  </div>
+  <div id="NEXT" class="panel NEXT">
+  	<a href="javascript:void(0)" class="closebtn" onclick="closeNEXT()">&times;</a>
+  </div>
+</div>
+
+<span id="menu-button" style="font-size:30px;cursor:pointer" onclick="openMenu()">&#9776;</span>
+
+<span id="tidbit-button" style="font-size:30px;cursor:pointer" onclick="openTidbit()">&#9776;</span>
+
+<span id="code-button" style="font-size:30px;cursor:pointer" onclick="openCode()">&#9776;</span>
+
+<span id="PREV-button" style="font-size:30px;cursor:pointer" onclick="openPREV()">&#9776;</span>
+
+<span id="NEXT-button" style="font-size:30px;cursor:pointer" onclick="openNEXT()">&#9776;</span>
+
+<script>
+function openMenu() {
+  document.getElementById("menu").style.width = "100%";
+}
+
+function closeMenu() {
+  document.getElementById("menu").style.width = "0";
+}
+
+function openTidbit() {
+  document.getElementById("tidbit").style.height = "100%";
+}
+
+function closeTidbit() {
+  document.getElementById("tidbit").style.height = "0";
+}
+
+function openCode() {
+  document.getElementById("code").style.height = "100%";
+}
+
+function closeCode() {
+  document.getElementById("code").style.height = "0";
+}
+
+function openPREV() {
+  document.getElementById("PREV").style.width = "100%";
+}
+
+function closePREV() {
+  document.getElementById("PREV").style.width = "0";
+}
+
+function openNEXT() {
+  document.getElementById("NEXT").style.width = "100%";
+}
+
+function closeNEXT() {
+  document.getElementById("NEXT").style.width = "0";
+}
+</script>
+
+</body>
+</html>

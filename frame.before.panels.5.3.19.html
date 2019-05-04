@@ -16,7 +16,7 @@ body {
 }
 
 /* Frame buttons */
-.frame-buttons {cursor:pointer; height:30px; border-radius:5px;}
+.frame-buttons {height:30px; border-radius:5px;}
 
 /* The 2 classes below .container and .vertical-center are used to center anything vertically. */
 .container {
@@ -99,6 +99,17 @@ body {
   width: 67%;
   float: left;
   background: white;
+}
+
+/* Animates screen coming in upon click of button */
+#row3column3 {
+  width: 0;
+  height: 100%;
+  box-shadow: 0px 1px 10px #808080;
+  -webkit-transition: width 2000ms; /* For Safari 3.1 to 6.0 */
+  transition: width 2000ms; /* Standard syntax */
+  -webkit-transition-timing-function: ease; /* For Safari 3.1 to 6.0 */
+  transition-timing-function: ease; /* Standard syntax */
 }
 
 .row3column4 {
@@ -249,91 +260,6 @@ body {
   .row5 {height: 5px;}
 }
 
-/* PANELS */
-.panel {
-  position: absolute;
-  z-index: 1;
-  box-shadow: 0px 1px 10px #808080;
-  -webkit-transition: 0.5s; /* For Safari 3.1 to 6.0 */
-  transition: 0.5s;
-  overflow-x: hidden;
-}
-
-.menu {
-  height: 100%;
-  width: 0;
-  top: 0;
-  left: 0;
-  background: pink;
-}
-
-.tidbit {
-  height: 0;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  background: orange;
-}
-
-.code {
-  height: 0;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  background: yellow;
-}
-
-.PREV {
-  height: 100%;
-  width: 0;
-  top: 0;
-  left: 0;
-  background: purple;
-}
-
-.NEXT {
-  height: 100%;
-  width: 0;
-  top: 0;
-  right: 0;
-  background: silver;
-}
-
-.panel a {
-  text-decoration: none;
-  color: #818181;
-}
-
-.panel a:hover{
-  color: red;
-}
-
-#menu-button:hover{
-  color: #0000ff;
-}
-
-#tidbit-button:hover{
-  color: #0000ff;
-}
-
-#code-button:hover{
-  color: #0000ff;
-}
-
-#PREV-button:hover{
-  color: #0000ff;
-}
-
-#NEXT-button:hover{
-  color: #0000ff;
-}
-
-.panel .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 50px;
-}
 </style>
 </head>
 <body>
@@ -347,7 +273,7 @@ body {
 	<div class="row2column2 row2height frameColor gridlines"></div>
 	<div class="container row2column3 row2height frameColor gridlines">
     	<!-- When the Menu button is clicked, the animation of the page comes in and the function is to bring in the text and other material after the animation. -->
-    	<span id="menu-button" class="vertical-center" style="font-size:30px;cursor:pointer" onclick="openMenu()">&#9776;</span>
+    	<a class="vertical-center" href="#" onclick="document.getElementById('row3column3').style = 'width:0'; document.getElementById('row3column3').style = 'width:100%; background:white'; setTimeout(myFunction, 2000)">Menu</a>
     </div>
 	<div class="container row2column4 row2height frameColor gridlines">
     	<b class="vertical-center align-right">GSAP BASICS</b>
@@ -359,23 +285,9 @@ body {
 <div class="row">
 	<div class="row3column1 row3height gridlines"></div>
 	<div class="row3column2 row3height frameColor gridlines"></div>
-	<div id="row3column3" class="container row3column3 row3height gridlines">
-    <div id="menu" class="panel menu">
-    	<a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+	<div class="row3column3 row3height gridlines">
+    	<div id="row3column3"></div>
     </div>
-    <div id="tidbit" class="panel tidbit">
-    	<a href="javascript:void(0)" class="closebtn" onclick="closeTidbit()">&times;</a>
-    </div>
-    <div id="code" class="panel code">
-    	<a href="javascript:void(0)" class="closebtn" onclick="closeCode()">&times;</a>
-    </div>
-    <div id="PREV" class="panel PREV">
-    	<a href="javascript:void(0)" class="closebtn" onclick="closePREV()">&times;</a>
-    </div>
-    <div id="NEXT" class="panel NEXT">
-    	<a href="javascript:void(0)" class="closebtn" onclick="closeNEXT()">&times;</a>
-    </div>
-  </div>
 	<div class="row3column4 row3height frameColor gridlines"></div>
 	<div class="row3column5 row3height gridlines"></div>
 </div>
@@ -385,14 +297,14 @@ body {
 	<div class="row4column2 row4height frameColor gridlines"></div>
 	<div class="container row4column3 row4height frameColor gridlines">
     	<div class="vertical-center">
-    		<button id="tidbit-button" class="frame-buttons" type="button" onclick="openTidbit()"><span style="font-size:12px">&lt;&sol;&gt;</span>Tidbit</button>
-        <button id="code-button" class="frame-buttons" type="button" onclick="openCode()"><span style="font-size:12px">&lt;&sol;&gt;</span>Code</button>
+    		<button class="frame-buttons" type="button" onclick="document.getElementById('row3column3').style = 'width:100%; background:white'; setTimeout(myFunction, 2000)"><span style="font-size:12px">&lt;&sol;&gt;</span>Tidbit</button>
+        	<button class="frame-buttons" type="button" onclick="document.getElementById('row3column3').style = 'width:100%; background:white'; setTimeout(myFunction, 2000)"><span style="font-size:12px">&lt;&sol;&gt;</span>Code</button>
 		</div>
     </div>
 	<div class="container row4column4 row4height frameColor gridlines">
     	<div class="vertical-center align-right">
-    		<button id="PREV-button" class="frame-buttons"  style="cursor:pointer" type="button" onclick="openPREV()">&#8678;PREV</button>
-        <button id="NEXT-button" class="frame-buttons" style="cursor:pointer" type="button" onclick="openNEXT()">NEXT&#8680;</button>
+    		<button class="frame-buttons" type="button" onclick="alert('Hello Previous!')">&#8678;PREV</button>
+        	<button class="frame-buttons" type="button" onclick="alert('Hello Next!')">NEXT&#8680;</button>
 		</div>
     </div>
 	<div class="row4column5 row4height frameColor gridlines"></div>
@@ -404,44 +316,8 @@ body {
 </div>
 
 <script>
-function openMenu() {
-  document.getElementById("menu").style.width = "100%";
-}
-
-function closeMenu() {
-  document.getElementById("menu").style.width = "0";
-}
-
-function openTidbit() {
-  document.getElementById("tidbit").style.height = "100%";
-}
-
-function closeTidbit() {
-  document.getElementById("tidbit").style.height = "0";
-}
-
-function openCode() {
-  document.getElementById("code").style.height = "100%";
-}
-
-function closeCode() {
-  document.getElementById("code").style.height = "0";
-}
-
-function openPREV() {
-  document.getElementById("PREV").style.width = "100%";
-}
-
-function closePREV() {
-  document.getElementById("PREV").style.width = "0";
-}
-
-function openNEXT() {
-  document.getElementById("NEXT").style.width = "100%";
-}
-
-function closeNEXT() {
-  document.getElementById("NEXT").style.width = "0";
+function myFunction() {
+  document.getElementById('row3column3').innerHTML = 'Hello Dallin Stephens!';
 }
 </script>
 
