@@ -168,14 +168,14 @@ body {
 }
 
 .menu a {
-  padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
   color: red;
   display: block;
   transition: 0.3s;
-
 }
+
+.menu .list a {padding: 8px 8px 8px 32px;}
 
 .tidbit {
   z-index: 2;
@@ -227,11 +227,12 @@ body {
 
 #menu.panel a, #tidbit.panel a, #code.panel a {
   text-decoration: none;
-  color: #818181;
+  color: red;
 }
 
 #menu.panel a:hover, #tidbit.panel a:hover, #code.panel a:hover{
-  color: red;
+  color: white;
+  background: red;
 }
 
 #menu-button:hover{
@@ -240,9 +241,11 @@ body {
 
 .panel .closebtn {
   position: absolute;
-  top: -15px;
-  right: 5px;
+  top: -5px;
+  right: 0px;
   font-size: 50px;
+  width: 50px;
+  text-align: center;
 }
 
 /* Page header for odd and even pages and tidbit and code pages. */
@@ -398,6 +401,7 @@ img {
 	<div id="row3column3" class="container row3column3 row3height gridlines">
     <div id="menu" class="panel menu">
     	<a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+      <span class="list">
         <a href="javascript:void(0)" onclick="n = 2; widthHideShow('PREV')">Page 1</a>
         <a href="javascript:void(0)" onclick="n = 1; widthHideShow('NEXT')">Page 2</a>
         <a href="javascript:void(0)" onclick="n = 2; widthHideShow('NEXT')">Page 3</a>
@@ -408,6 +412,7 @@ img {
         <a href="javascript:void(0)" onclick="n = 7; widthHideShow('NEXT')">Page 8</a>
         <a href="javascript:void(0)" onclick="n = 8; widthHideShow('NEXT')">Page 9</a>
         <a href="javascript:void(0)" onclick="n = 9; widthHideShow('NEXT')">&nbsp;&nbsp;Page 10</a>
+      </span>
     </div>
     <div id="tidbit" class="panel tidbit">
     	<a href='javascript:void(0)' class='closebtn' onclick='closeTidbit()'>&times;</a>
