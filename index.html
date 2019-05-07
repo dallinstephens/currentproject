@@ -5,7 +5,7 @@
 <style>
 /* This is used for the color of the page. */
 body {
-  background-color: lightgreen;
+  background-color: #e6fff5;
 }
 
 .frameColor {background: lightgrey;}
@@ -151,8 +151,8 @@ body {
 .panel {
   position: absolute;
   box-shadow: 0px 1px 5px #808080;
-  -webkit-transition: 0.5s; /* For Safari 3.1 to 6.0 */
-  transition: 0.5s;
+  -webkit-transition: 1s; /* For Safari 3.1 to 6.0 */
+  transition: 1s;
   overflow-x: hidden;
 }
 
@@ -251,8 +251,11 @@ body {
 /* Page header for odd and even pages and tidbit and code pages. */
 .pageheader {font-size: 30px; padding:20px; width:100%;}
 
-/* Page header color for odd and even pages. */
-.odd-page .pageheader, .even-page .pageheader {background:#1cb01c;}
+/* Page header color for odd pages. */
+.odd-page .pageheader {background:#00e68a;}
+
+/* Page header color for even pages. */
+.even-page .pageheader {background:#00e68a;}
 
 /* Page header color for tidbit pages. */
 .tidbit .pageheader {background:orange;}
@@ -269,7 +272,7 @@ img {
 /* @MEDIA (RESPONSIVE WEB DESIGN): These css changes are made as the size of the screen decreases. @media must come after css: eg. body {background-color: lightgreen;} to work. */
 @media only screen and (max-width: 1200px) {
   body {
-    background-color: lightgreen; /* Put in a different color than light green if you want to see the changes more easily. */
+    background-color: #e6fff5; /* Put in a different color than light green if you want to see screen size changes more easily. */
   }
 
   /* Adding 5 row heights (320px is the standard height of a smallest iPhone): 5px + 60px + 570px + 60px + 5px = 700px */
@@ -360,7 +363,7 @@ img {
 /* These css changes are made as the size of the screen decreases. @media must come after css: eg. body {background-color: lightgreen;} to work. */
 @media only screen and (max-width: 600px) {
   body {
-    background-color: lightgreen; /* Put in a different color than light green if you want to see the changes more easily. */
+    background-color: #e6fff5; /* Put in a different color than light green if you want to see the changes more easily. */
   }
 
   /* Adding 5 row heights (320px is the standard height of a smallest iPhone): 5px + 60px + 400px + 60px + 5px = 530px */
