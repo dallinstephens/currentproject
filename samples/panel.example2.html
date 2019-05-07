@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.container {position: relative;}
+
+.row3column3 {float:left; top:100px; left:0px; height:200px; width:300px; border:solid 1px black;}
+
+.panel {
+  position: absolute;
+  /* box-shadow: 0px 1px 10px #808080; */
+  -webkit-transition: 0.5s; /* For Safari 3.1 to 6.0 */
+  transition: 0.5s;
+  overflow-x: hidden;
+}
+
+.menu {
+  z-index: 2;
+  height: 100%;
+  width: 0;
+  top: 0;
+  left: 0;
+  background: pink;
+}
+
+.tidbit {
+  z-index: 2;
+  height: 0;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: orange;
+  overflow-y: hidden;
+}
+
+.code {
+  z-index: 2;
+  height: 0;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: yellow;
+  overflow-y: hidden;
+}
+
+/* Odd pages */
+.odd-page {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background: silver;
+}
+
+/* Used to shift odd page left or right when PREV or NEXT clicked */
+.odd-left {left: 0;}
+.odd-right {right: 0;}
+
+/* Even pages */
+.even-page {
+  height: 100%;
+  width: 0;
+  top: 0;
+  background: gold;
+}
+
+/* Used to shift even page left or right when PREV or NEXT clicked */
+.even-left {left: 0;}
+.even-right {right: 0;}
+
+#menu.panel a, #tidbit.panel a, #code.panel a {
+  text-decoration: none;
+  color: #818181;
+}
+
+#menu.panel a:hover, #tidbit.panel a:hover, #code.panel a:hover{
+  color: red;
+}
+
+#menu-button:hover{
+  color: #0000ff;
+}
+
+.panel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 50px;
+}
+</style>
+</head>
+<body>
+
+<!-- row3column3 menu, tidbit, and code panels AND PREV NEXT pages -->
+<div class="row3column3 container">
+  <div id="menu" class="panel menu">
+  	<a href="javascript:void(0)" class="closebtn" onclick="closeMenu()">&times;</a>
+  </div>
+  <div id="tidbit" class="panel tidbit">
+  	<a href="javascript:void(0)" class="closebtn" onclick="closeTidbit()">&times;</a>
+  </div>
+  <div id="code" class="panel code">
+  	<a href="javascript:void(0)" class="closebtn" onclick="closeCode()">&times;</a>
+  </div>
+  <div id="oddPage" class="panel odd-page"></div>
+  <div id="evenPage" class="panel even-page"></div>
+</div>
+
+<!-- Buttons to open panels and switch pages with PREV and NEXT -->
+<span id="menu-button" style="font-size:30px;cursor:pointer" onclick="widthHideShow('menu')">&#9776;</span>
+
+<a id="tidbit-button" href="javascript:void(0)" style="font-size:14px;cursor:pointer" onclick="heightHideShow('tidbit')">Tidbit</a>
+
+<a id="code-button" href="javascript:void(0)" style="font-size:14px;cursor:pointer" onclick="heightHideShow('code')">Code</a>
+
+<a id="PREV-button" href="javascript:void(0)" style="font-size:14px;cursor:pointer" onclick="widthHideShow('PREV')">PREV</a>
+
+<a id="NEXT-button" href="javascript:void(0)" style="font-size:14px;cursor:pointer" onclick="widthHideShow('NEXT')">NEXT</a>
+
+<script>
+// The var n needs to be out of the function so that n will change each time when PREV or NEXT is clicked.
+var n;
+
+// Open and closes panels/pages that slide right or left: menu, PREV, & NEXT
+function widthHideShow(a) {
+  var x = document.getElementById(a);
+
+  if (a === "menu") {
+
+  	// This is used to close the tidbit or code panel if either is open when menu is clicked.
+	if (document.getElementById("tidbit").style.height === "100%" || document.getElementById("code").style.height === "100%") {
+      if (x.style.width === "" || x.style.width == "0px") {
+        x.style.width = "100%";
+        if (document.getElementById("tidbit").style.height === "100%") {
+        	heightHideShow("tidbit");
+        }
+        if (document.getElementById("code").style.height === "100%") {
+        	heightHideShow("code");
+        }
+      }
+      else {
+        if (document.getElementById("tidbit").style.height === "100%") {
+        	heightHideShow("tidbit");
+        }
+        if (document.getElementById("code").style.height === "100%") {
+        	heightHideShow("code");
+        }
+      }
+    }
+    // If both tidbit and code panels are closed when menu is clicked, then it goes here.
+    else {
+      if (x.style.width === "" || x.style.width == "0px") {
+        x.style.width = "100%";
+      } else {
+        x.style.width = "0";
+      }
+    }
+
+  }
+
+  else if (a === "PREV" || a === "NEXT") {
+  	// The following 3 if's are used to close menu, tidbit, or code if they are open when PREV or NEXT is clicked.
+  	if (document.getElementById("menu").style.width === "100%") {
+    	widthHideShow("menu");
+    }
+  	if (document.getElementById("tidbit").style.height === "100%") {
+    	heightHideShow("tidbit");
+    }
+  	if (document.getElementById("code").style.height === "100%") {
+    	heightHideShow("code");
+    }
+
+	// This is used to change a page to the previous or next page.
+
+    if (a === "NEXT") {
+ 		if (n === undefined || n === 0) {n = 2;}
+ 		else {n = n + 1;}
+    }
+    else if (a === "PREV") {
+		if (n === undefined || n <= 0) {n = 0;}
+		else {n = n - 1;}
+    }
+
+    // This checks to see if n is even or odd.
+    if (n % 2 === 0) {
+    	var element = document.getElementById("oddPage");
+
+        var element2 = document.getElementById("evenPage");
+        // PREV was clicked to an even page number.
+        if (a === "PREV" && n !== 0) {
+          element.classList.remove("odd-left");
+          element.classList.add("odd-right");
+          element2.classList.remove("even-right");
+          element2.classList.add("even-left");
+          document.getElementById("evenPage").style.width = "100%";
+          document.getElementById("oddPage").style.width = "0";
+        }
+        // NEXT was clicked to an even page number.
+        else if (a === "NEXT") {
+          element.classList.remove("odd-right");
+          element.classList.add("odd-left");
+          element2.classList.remove("even-left");
+          element2.classList.add("even-right");
+          document.getElementById("evenPage").style.width = "100%";
+          document.getElementById("oddPage").style.width = "0";
+        }
+    }
+    else if (n % 2 !== 0) {
+      	var element = document.getElementById("oddPage");
+
+        var element2 = document.getElementById("evenPage");
+        // PREV was clicked to an odd page number.
+        if (a === "PREV" && n !== 0) {
+          element.classList.remove("odd-right");
+          element.classList.add("odd-left");
+          element2.classList.remove("even-left");
+          element2.classList.add("even-right");
+          document.getElementById("oddPage").style.width = "100%";
+          document.getElementById("evenPage").style.width = "0";
+        }
+        // NEXT was clicked to an odd page number.
+        else if (a === "NEXT") {
+          element.classList.remove("odd-left");
+          element.classList.add("odd-right");
+          element2.classList.remove("even-right");
+          element2.classList.add("even-left");
+          document.getElementById("oddPage").style.width = "100%";
+          document.getElementById("evenPage").style.width = "0";
+        }
+    }
+
+  }
+
+}
+
+// Open and closes panels that slide up or down
+function heightHideShow(b) {
+  var y = document.getElementById(b);
+
+  if (b === "tidbit" && document.getElementById("code").style.height === "100%") {
+  	document.getElementById("code").style.height = "0";
+    if (y.style.height === "" || y.style.height == "0px") {
+      y.style.height = "100%";
+    } else {
+      y.style.height = "0";
+    }
+  }
+
+  else if (b === "code" && document.getElementById("tidbit").style.height === "100%") {
+  	document.getElementById("tidbit").style.height = "0";
+    if (y.style.height === "" || y.style.height == "0px") {
+      y.style.height = "100%";
+    } else {
+      y.style.height = "0";
+    }
+  }
+
+  else {
+    if (y.style.height === "" || y.style.height == "0px") {
+      y.style.height = "100%";
+    } else {
+      y.style.height = "0";
+    }
+  }
+
+}
+
+// Close X buttons
+function closeMenu() {
+  document.getElementById("menu").style.width = "0";
+}
+
+function closeTidbit() {
+  document.getElementById("tidbit").style.height = "0";
+}
+
+function closeCode() {
+  document.getElementById("code").style.height = "0";
+}
+</script>
+
+</body>
+</html>
