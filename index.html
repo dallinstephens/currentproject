@@ -143,7 +143,7 @@ body {
   float: left;
 }
 
-/* PANELS */
+/* PANELS: Panels include Menu, Tidbit, Code, and PREV & NEXT (odd and even pages). */
 .panel {
   position: absolute;
   box-shadow: 0px 1px 5px #808080;
@@ -173,6 +173,20 @@ body {
 
 .menu .list a {padding: 8px 8px 8px 32px;}
 
+#menu.panel a, #tidbit.panel a, #code.panel a {
+  text-decoration: none;
+  color: red;
+}
+
+#menu.panel a:hover, #tidbit.panel a:hover, #code.panel a:hover{
+  color: white;
+  background: red;
+}
+
+#menu-button:hover{
+  color: #0000ff;
+}
+
 .tidbit {
   z-index: 2;
   height: 0;
@@ -193,6 +207,15 @@ body {
   overflow-y: hidden;
 }
 
+.panel .closebtn {
+  position: absolute;
+  top: -5px;
+  right: 0px;
+  font-size: 50px;
+  width: 50px;
+  text-align: center;
+}
+
 /* Odd pages */
 .odd-page {
   height: 100%;
@@ -200,14 +223,6 @@ body {
   top: 0;
   background: white;
 }
-
-/* nowrap: used so text do not shift when pages slide. I want text to wrap though on tidbit and code pages so that is why it is more specific here. */
-.row3column3 .odd-page, .row3column3 .even-page {white-space:nowrap;}
-.row3column3 .tidbit, .row3column3 .code {white-space:wrap;}
-
-/* Used to shift odd page left or right when PREV or NEXT clicked */
-.odd-left {left: 0;}
-.odd-right {right: 0;}
 
 /* Even pages */
 .even-page {
@@ -217,32 +232,16 @@ body {
   background: white;
 }
 
-/* Used to shift even page left or right when PREV or NEXT clicked */
+/* Used to shift odd page left or right when PREV or NEXT clicked. The shifting transition time is in the class .panel */
+.odd-left {left: 0;}
+.odd-right {right: 0;}
+
+/* Used to shift even page left or right when PREV or NEXT clicked. The shifting transition time is in the class .panel */
 .even-left {left: 0;}
 .even-right {right: 0;}
 
-#menu.panel a, #tidbit.panel a, #code.panel a {
-  text-decoration: none;
-  color: red;
-}
-
-#menu.panel a:hover, #tidbit.panel a:hover, #code.panel a:hover{
-  color: white;
-  background: red;
-}
-
-#menu-button:hover{
-  color: #0000ff;
-}
-
-.panel .closebtn {
-  position: absolute;
-  top: -5px;
-  right: 0px;
-  font-size: 50px;
-  width: 50px;
-  text-align: center;
-}
+/* When odd or even pages shift left or right, the text needs to stay in place by using nowrap. However, when pages are not shifting left or right, wrap is needed so the text stays on the screen. */
+.nowrap {white-space: nowrap;}
 
 /* Page header for odd and even pages and tidbit and code pages. */
 .pageheader {font-size: 30px; padding:20px; width:100%;}
@@ -262,6 +261,7 @@ body {
 /* Resposive Web Design Images: The image will scale down if it needs too, but it will never scale up larger than its original size. */
 img {
   max-width: 100%;
+  min-width: 150px;
   height: auto;
 }
 
@@ -350,10 +350,6 @@ img {
     width: 1%;
   }
 
-  /* Horizonal scrollbar is needed because of nowrap when the screen gets smaller */
-  .odd-page {overflow-x: scroll;}
-  .even-page {overflow-x: scroll;}
-  .pageheader {width:300%;} /* Width needs to be longer so that when screen size gets smaller the header is still long enough. */
 }
 
 /* These css changes are made as the size of the screen decreases. @media must come after css: eg. body {background-color: lightgreen;} to work. */
@@ -416,7 +412,7 @@ img {
         <div class='pageheader'><b>Code for Page 1</b></div><p style='font-size:20px; padding-left:20px; padding-right:20px'>Here I can enter code information for Page 1.</p>
     </div>
     <div id="oddPage" class="panel odd-page">
-      <div class='pageheader'><b>PAGE 1: STARTING PAGE</b></div><p style='font-size:20px; padding-left:20px; padding-right:20px'>Hi everyone,<br><br>This is the starting page! If you click the previous button on this page, it will<br>not go anywhere because there are no previous pages before the starting page.<br>Try clicking the next button several times and then try clicking the previous<br>button several times until you end up back at this starting page.<br><br>Please click the Menu, Tidbit, and Code buttons as well on different pages to<br>see what they do. The Menu button is the three bar icon located at the top left.<br><br>Thanks for looking!<br><img style='position:relative; top:5px; left:-33px; width:150px' src='img/Stephens_Dallin.jpg'><br>Dallin Stephens</p>
+      <div class='pageheader'><b>PAGE 1: STARTING PAGE</b></div><p style='font-size:20px; padding-left:20px; padding-right:20px'>Hi everyone,<br><br>This is the starting page! If you click the previous button on this page, it will not go anywhere because there are no previous pages before the starting page. Try clicking the next button several times and then try clicking the previous button several times until you end up back at this starting page.<br><br>Please click the Menu, Tidbit, and Code buttons as well on different pages to see what they do. The Menu button is the three bar icon located at the top left.<br><br>Thanks for looking!<br><img style='position:relative; top:5px; left:-33px; width:150px' src='img/Stephens_Dallin.jpg'><br>Dallin Stephens</p>
     </div>
     <div id="evenPage" class="panel even-page"></div>
   </div>
@@ -430,8 +426,8 @@ img {
 	<div class="row4column2 row4height frameColor gridlines"></div>
 	<div class="container row4column3 row4height frameColor gridlines">
     	<div class="vertical-center">
-    		<button id="tidbit-button" class="frame-buttons" type="button" onclick="heightHideShow('tidbit')"><span style="font-size:12px; cursor:pointer">&lt;&sol;&gt;</span>Tidbit</button>
-        <button id="code-button" class="frame-buttons" type="button" onclick="heightHideShow('code')"><span style="font-size:12px; cursor:pointer">&lt;&sol;&gt;</span>Code</button>
+    		<button id="tidbit-button" class="frame-buttons" type="button" onclick="heightHideShow('tidbit')"><span style="font-size:8px; cursor:pointer">&lt;&sol;&gt;</span>Tidbit</button>
+        <button id="code-button" class="frame-buttons" type="button" onclick="heightHideShow('code')"><span style="font-size:8px; cursor:pointer">&lt;&sol;&gt;</span>Code</button>
 		</div>
     </div>
 	<div class="container row4column4 row4height frameColor gridlines">
@@ -502,8 +498,7 @@ function widthHideShow(a) {
     	heightHideShow("code");
     }
 
-	// This is used to change a page to the previous or next page.
-
+	   // This is used to change a page to the previous or next page.
     if (a === "NEXT") {
  		if (n === undefined || n === 0) {n = 2;}
  		else {n = n + 1;}
@@ -514,39 +509,43 @@ function widthHideShow(a) {
     }
 
     // Tidbit panel changes according to page number.
-	document.getElementById("tidbit").innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closeTidbit()'>&times;</a><div class='pageheader'><b>Tidbit for Page " + n + "</b></div><p style='font-size:20px; padding-left:20px; padding-right:20px'>Here I can enter tibit information for Page " + n + ".</p>";
+  	document.getElementById("tidbit").innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closeTidbit()'>&times;</a><div class='pageheader'><b>Tidbit for Page " + n + "</b></div><p style='font-size:20px; padding-left:20px; padding-right:20px'>Here I can enter tibit information for Page " + n + ".</p>";
 
     // Code panel changes according to page number.
-	document.getElementById("code").innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closeCode()'>&times;</a><div class='pageheader'><b>Code for Page " + n + "</b></div><p style='font-size:20px; padding-left:20px; padding-right:20px'>Here I can enter code information for Page " + n + ".</p>";
+  	document.getElementById("code").innerHTML = "<a href='javascript:void(0)' class='closebtn' onclick='closeCode()'>&times;</a><div class='pageheader'><b>Code for Page " + n + "</b></div><p style='font-size:20px; padding-left:20px; padding-right:20px'>Here I can enter code information for Page " + n + ".</p>";
 
     // This checks to see if n is even or odd.
+    // This is for even pages.
     if (n % 2 === 0) {
     	document.getElementById("evenPage").innerHTML = "<div class='pageheader'><b>PAGE " + n + "</b></div><p style='font-size:20px; padding-left:20px; padding-right:20px'>Hi, you have arrived at page " + n + ".</p>";
 
-    	var element = document.getElementById("oddPage");
+      var element = document.getElementById("oddPage");
 
-        var element2 = document.getElementById("evenPage");
-        // PREV was clicked to an even page number.
-        if (a === "PREV" && n !== 0) {
-          element.classList.remove("odd-left");
-          element.classList.add("odd-right");
-          element2.classList.remove("even-right");
-          element2.classList.add("even-left");
-          document.getElementById("evenPage").style.width = "100%";
-          document.getElementById("oddPage").style.width = "0";
-        }
-        // NEXT was clicked to an even page number.
-        else if (a === "NEXT") {
-          element.classList.remove("odd-right");
-          element.classList.add("odd-left");
-          element2.classList.remove("even-left");
-          element2.classList.add("even-right");
-          document.getElementById("evenPage").style.width = "100%";
-          document.getElementById("oddPage").style.width = "0";
-        }
+      var element2 = document.getElementById("evenPage");
+      // PREV was clicked to an even page number.
+      if (a === "PREV" && n !== 0) {
+        // nowrap needs to be added on both odd and even pages since they overlap when the pages shift left or right when a button is clicked.
+        element.classList.remove("odd-left");
+        element.classList.add("odd-right", "nowrap");
+        element2.classList.remove("even-right");
+        element2.classList.add("even-left", "nowrap");
+        document.getElementById("evenPage").style.width = "100%";
+        document.getElementById("oddPage").style.width = "0";
+      }
+      // NEXT was clicked to an even page number.
+      else if (a === "NEXT") {
+        // nowrap needs to be added on both odd and even pages since they overlap when the pages shift left or right when a button is clicked.
+        element.classList.remove("odd-right");
+        element.classList.add("odd-left", "nowrap");
+        element2.classList.remove("even-left");
+        element2.classList.add("even-right", "nowrap");
+        document.getElementById("evenPage").style.width = "100%";
+        document.getElementById("oddPage").style.width = "0";
+      }
     }
+    // This is for odd pages.
     else if (n % 2 !== 0) {
-    	if (n === 1) {document.getElementById("oddPage").innerHTML = "<div class='pageheader'><b>PAGE 1: STARTING PAGE</b></div><p style='font-size:20px; padding-left:20px; padding-right:20px'>Hi everyone,<br><br>This is the starting page! If you click the previous button on this page, it will<br>not go anywhere because there are no previous pages before the starting page.<br>Try clicking the next button several times and then try clicking the previous<br>button several times until you end up back at this starting page.<br><br>Please click the Menu, Tidbit, and Code buttons as well on different pages to<br>see what they do. The Menu button is the three bar icon located at the top left.<br><br>Thanks for looking!<br><img style='position:relative; top:5px; left:-33px; width:150px' src='img/Stephens_Dallin.jpg'><br>Dallin Stephens</p>";}
+    	if (n === 1) {document.getElementById("oddPage").innerHTML = "<div class='pageheader'><b>PAGE 1: STARTING PAGE</b></div><p style='font-size:20px; padding-left:20px; padding-right:20px'>Hi everyone,<br><br>This is the starting page! If you click the previous button on this page, it will not go anywhere because there are no previous pages before the starting page. Try clicking the next button several times and then try clicking the previous button several times until you end up back at this starting page.<br><br>Please click the Menu, Tidbit, and Code buttons as well on different pages to see what they do. The Menu button is the three bar icon located at the top left.<br><br>Thanks for looking!<br><img style='position:relative; top:5px; left:-33px; width:150px' src='img/Stephens_Dallin.jpg'><br>Dallin Stephens</p>";}
     	else {document.getElementById("oddPage").innerHTML = "<div class='pageheader'><b>PAGE " + n + "</b></div><p style='font-size:20px; padding-left:20px; padding-right:20px'>Hi, you have arrived at page " + n + ".</p>";}
 
       	var element = document.getElementById("oddPage");
@@ -554,26 +553,31 @@ function widthHideShow(a) {
         var element2 = document.getElementById("evenPage");
         // PREV was clicked to an odd page number.
         if (a === "PREV" && n !== 0) {
+          // nowrap needs to be added on both odd and even pages since they overlap when the pages shift left or right when a button is clicked.
           element.classList.remove("odd-right");
-          element.classList.add("odd-left");
+          element.classList.add("odd-left", "nowrap");
           element2.classList.remove("even-left");
-          element2.classList.add("even-right");
+          element2.classList.add("even-right", "nowrap");
           document.getElementById("oddPage").style.width = "100%";
           document.getElementById("evenPage").style.width = "0";
         }
         // NEXT was clicked to an odd page number.
         else if (a === "NEXT") {
+          // nowrap needs to be added on both odd and even pages since they overlap when the pages shift left or right when a button is clicked.
           element.classList.remove("odd-left");
-          element.classList.add("odd-right");
+          element.classList.add("odd-right", "nowrap");
           element2.classList.remove("even-right");
-          element2.classList.add("even-left");
+          element2.classList.add("even-left", "nowrap");
           document.getElementById("oddPage").style.width = "100%";
           document.getElementById("evenPage").style.width = "0";
         }
     }
-
   }
-
+  // nowrap needs to be removed after the page transition because wrap is needed when pages are not sliding and screen size changes.
+  setTimeout(function() {
+      element.classList.remove("nowrap");
+      element2.classList.remove("nowrap");
+  }, 1000);
 }
 
 // Open and closes panels that slide up or down
